@@ -1,0 +1,32 @@
+Like And Sub 
+
+Local Script : 
+
+local player = game.Players.LocalPlayer
+local timerRemoteEvent = game.ReplicatedStorage:FindFirstChild("TimerRemoteEvent")
+
+local timerGui = player.PlayerGui.TimerGui
+local timerLabel = timerGui.TimeLabel
+
+timerRemoteEvent.OnClientEvent:Connect(function(timer)
+	timerLabel.Text = timer
+	timerLabel.Visible = true
+	wait(1)
+	repeat
+		timer -= 1
+		timerLabel.Text = timer
+		wait(1)
+	until
+	timer <= 0
+	timerLabel.Visible = false
+end)
+
+Script :
+
+local TimerRemoteEvent = game.ReplicatedStorage:FindFirstChild("TimerRemoteEvent")
+
+wait(8)
+TimerRemoteEvent:FireAllClients(100)
+wait(5)
+
+Bye!!
